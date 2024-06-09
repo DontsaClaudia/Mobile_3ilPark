@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_3ilPark.WelcomePage"
+             BackgroundColor="#F8F9FB">
+
+    <ContentPage.Content>
+        <Grid Padding="30" VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="welcome.png" Aspect="AspectFit" HeightRequest="250" Grid.Row="0" HorizontalOptions="Center"/>
+
+            <StackLayout Grid.Row="2" VerticalOptions="Center">
+                <Label Text="WELCOME TO 3ILPARK"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#ff5733" />
+
+                <Label Text="Votre gestion en une seule main"
+                       FontSize="20"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center"
+                       TextColor="#0b8699"
+                       Margin="0,10,0,0" />
+            </StackLayout>
+
+            <Button Text="Get start"
+                    TextColor="#0b8699"
+                    BackgroundColor="#ff5733"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Margin="0,30,0,0"
+                    Clicked="OnNextButtonClicked" 
+                    Grid.Row="3"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_3ilPark.Loginxaml"
+             Title="Login">
+
+    <ContentPage.Content>
+        <Grid Padding="30" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image Source="loggin_page.png" Aspect="AspectFit" HeightRequest="300" Grid.Row="0" WidthRequest="300" />
+
+            <Label Text="Welcome Back!" 
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="#333"
+               Grid.Row="1"
+               Margin="0,20,0,10" />
+
+            <Entry x:Name="emailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               Grid.Row="2"
+               Margin="0,10"
+               BackgroundColor="#f5f5f5"
+               TextColor="#333"
+               PlaceholderColor="#888"
+               HeightRequest="40"
+               VerticalOptions="Center"
+               HorizontalOptions="FillAndExpand" />
+
+            <Label x:Name="emailErrorLabel" TextColor="Red" IsVisible="False" Grid.Row="3" />
+
+            <Entry x:Name="passwordEntry"
+               Placeholder="Password"
+               IsPassword="True"
+               Grid.Row="4"
+               Margin="0,10"
+               BackgroundColor="#f5f5f5"
+               TextColor="#333"
+               PlaceholderColor="#888"
+               HeightRequest="40"
+               VerticalOptions="Center"
+               HorizontalOptions="FillAndExpand" />
+
+            <Label x:Name="passwordErrorLabel" TextColor="Red" IsVisible="False" Grid.Row="5" />
+
+            <Button Text="Login"
+                TextColor="White"
+                BackgroundColor="#007bff"
+                CornerRadius="20"
+                Grid.Row="6"
+                Margin="0,20"
+                HeightRequest="45"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnLoginButtonClicked" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

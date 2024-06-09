@@ -1,0 +1,64 @@
+<Shell
+    x:Class="Mobile_3ilPark.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Mobile_3ilPark"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TabBarIsVisible="True"
+    Title="Mobile_3ilPark">
+
+    <!-- En-tête du Flyout -->
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="10" BackgroundColor="#ffffff">
+            <Image Source="logo3il.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <!-- Items du Flyout -->
+    <FlyoutItem Title="Dashboard" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
+            Icon="homes.png" />
+
+        <ShellContent
+            Title="Parcs"
+            ContentTemplate="{DataTemplate local:Parcs}"
+            Route="Parcs"
+            Icon="park.png" />
+
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate local:Profile}"
+            Route="Profile"
+            Icon="profile.png" />
+
+        <ShellContent
+            Title="Computers"
+            ContentTemplate="{DataTemplate local:ComputersPage}"
+            Route="ComputersPage"
+            Icon="computer.png" />
+
+        <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate local:Loginxaml}"
+            Route="Loginxaml"
+            Icon="login.png" />
+    </FlyoutItem>
+
+    <!-- Autres éléments du Flyout -->
+    <FlyoutItem Title="Settings" FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage"
+            Icon="settings.png" />
+    </FlyoutItem>
+
+    <ShellContent
+        Title="Welcome"
+        ContentTemplate="{DataTemplate local:WelcomePage}"
+        Route="WelcomePage" />
+
+</Shell>

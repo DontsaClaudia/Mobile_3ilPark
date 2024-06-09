@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_3ilPark.SettingsPage"
+             Title="Settings"
+             BackgroundColor="#ffffff">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Settings"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10" />
+
+            <!-- Section des notifications -->
+            <Label Text="Notifications"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,10" />
+            <Switch x:Name="notificationSwitch"
+                    IsToggled="true"
+                    HorizontalOptions="Start" />
+            <Label Text="Enable Notifications"
+                   FontSize="18"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center" />
+
+            <!-- Section du thème -->
+            <Label Text="Theme"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,10" />
+            <Picker x:Name="themePicker"
+                    Title="Select Theme"
+                    HorizontalOptions="FillAndExpand">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Light</x:String>
+                        <x:String>Dark</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Save Settings"
+                    TextColor="White"
+                    BackgroundColor="#00D1FF"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    VerticalOptions="End"
+                    HorizontalOptions="Center"
+                    Margin="0,30,0,0"
+                    Clicked="OnSaveSettingsClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
