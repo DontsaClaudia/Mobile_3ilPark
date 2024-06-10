@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Mobile_3ilPark"
     Shell.FlyoutBehavior="Flyout"
-    Shell.TabBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Shell.ForegroundColor="Black"
     Title="Mobile_3ilPark">
 
     <!-- En-tête du Flyout -->
@@ -28,12 +29,7 @@
             Route="Parcs"
             Icon="park.png" />
 
-        <ShellContent
-            Title="Profile"
-            ContentTemplate="{DataTemplate local:Profile}"
-            Route="Profile"
-            Icon="profile.png" />
-
+        
         <ShellContent
             Title="Computers"
             ContentTemplate="{DataTemplate local:ComputersPage}"
@@ -41,10 +37,13 @@
             Icon="computer.png" />
 
         <ShellContent
-            Title="Login"
-            ContentTemplate="{DataTemplate local:Loginxaml}"
-            Route="Loginxaml"
-            Icon="login.png" />
+            Title="Profile"
+            ContentTemplate="{DataTemplate local:Profile}"
+            Route="Profile"
+            Icon="profile.png" />
+
+
+
     </FlyoutItem>
 
     <!-- Autres éléments du Flyout -->
@@ -56,9 +55,6 @@
             Icon="settings.png" />
     </FlyoutItem>
 
-    <ShellContent
-        Title="Welcome"
-        ContentTemplate="{DataTemplate local:WelcomePage}"
-        Route="WelcomePage" />
+   
 
 </Shell>

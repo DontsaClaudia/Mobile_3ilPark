@@ -11,6 +11,7 @@ public partial class ComputersPage : ContentPage
 {
     private readonly ApiService _apiService;
     private List<Computers> _allComputers;
+    string token = Preferences.Get("AuthToken", string.Empty);
 
     public ComputersPage()
     {
@@ -21,9 +22,11 @@ public partial class ComputersPage : ContentPage
 
     private async void LoadComputers()
     {
-        _allComputers = await _apiService.GetComputersAsync();
+
+        _allComputers = await _apiService.GetComputersAsync(token);
         ComputersCollectionView.ItemsSource = _allComputers;
-    }
+
+    } 
 
     private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
     {

@@ -52,7 +52,8 @@ namespace Mobile_3ilPark
             if (result.IsSuccess)
             {
                 // Save the token or any other data as needed
-                Preferences.Set("AuthToken", result.Token);
+                Preferences.Set("AuthToken", result.accessToken);
+                Preferences.Set("UserId", result.UserId);
 
                 // Naviguer vers la WelcomePage après une connexion réussie
                 await Navigation.PushAsync(new WelcomePage());
@@ -61,8 +62,6 @@ namespace Mobile_3ilPark
             {
                 await DisplayAlert("Error", "Invalid email or password.", "OK");
             }
-
-           
         }
 
         private bool IsValidEmail(string email)

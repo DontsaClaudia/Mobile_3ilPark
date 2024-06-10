@@ -3,10 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobile_3ilPark.Profile"
              Title="Profile">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Avatar and Name -->
+            <StackLayout HorizontalOptions="Center">
+                <Frame WidthRequest="100" HeightRequest="100" CornerRadius="50" BackgroundColor="#EFEFEF" HorizontalOptions="Center">
+                    <Label x:Name="AvatarLabel" Text="JS" HorizontalOptions="Center" VerticalOptions="Center" FontSize="48" TextColor="Purple"/>
+                </Frame>
+                <Label x:Name="NameLabel" Text="Zain Malik" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label x:Name="JoinedDateLabel" Text="Joined August 17, 2023" FontSize="14" TextColor="#888" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- General Information -->
+            <Frame CornerRadius="10" Padding="15" BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="General" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="icon_user.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label x:Name="UserNameLabel" Text="Zain Malik" FontSize="16"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="icon_email.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label x:Name="UserEmailLabel" Text="zainmalik02323@gmail.com" FontSize="16"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="icon_phone.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label x:Name="UserPhoneLabel" Text="(628) 267-9041" FontSize="16"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="icon_feedback.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label Text="Feedback" FontSize="16"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Notifications -->
+            <Frame CornerRadius="10" Padding="15" BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Notifications" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Label Text="Push notifications" FontSize="16"/>
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="True"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Logout Button -->
+            <Button Text="Logout" 
+                    TextColor="White" 
+                    BackgroundColor="#FF0000" 
+                    CornerRadius="40" 
+                    Margin="0,20,0,0"
+                    Clicked="OnLogoutButtonClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
