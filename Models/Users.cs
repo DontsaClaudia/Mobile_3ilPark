@@ -1,6 +1,6 @@
 ﻿namespace Mobile_3ilPark.Models
 {
-    public class Users
+    public class Users 
     {
         public int Id { get; set; }
         public string? Name { get; set; }

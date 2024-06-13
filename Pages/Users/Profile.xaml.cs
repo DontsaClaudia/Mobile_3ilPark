@@ -9,6 +9,9 @@ namespace Mobile_3ilPark
     public partial class Profile : ContentPage
     {
         private readonly ApiService _apiService;
+        public Users User { get; set; }
+
+        string token = Preferences.Get("AuthToken", string.Empty);
 
         public Profile()
         {
@@ -21,13 +24,14 @@ namespace Mobile_3ilPark
         {
             try
             {
-                var userId = Preferences.Get("UserId", 0); // Get the stored user ID
+                var userId = Preferences.Get("UserId", 0); 
                 if (userId != 0)
                 {
-                    var user = await _apiService.GetUserAsync(userId);
+                    var user = await _apiService.GetUserAsync(userId, token);
                     if (user != null)
                     {
-                        BindUserData(user);
+                        User = user;
+                        BindUserData();
                     }
                     else
                     {
@@ -45,18 +49,21 @@ namespace Mobile_3ilPark
             }
         }
 
-        private void BindUserData(Users user)
+        private void BindUserData()
         {
-            NameLabel.Text = user.Name;
-            JoinedDateLabel.Text = $"Joined {DateTime.Now.ToString("MMMM dd, yyyy")}";
-            UserNameLabel.Text = user.Name;
-            UserEmailLabel.Text = user.Email;
-            UserPhoneLabel.Text = user.PhoneNumber;
+            BindingContext = User;
+
+            NameLabel.Text = User.Name;
+            var loginDate = Preferences.Get("LoginDate", string.Empty);
+            JoinedDateLabel.Text = !string.IsNullOrEmpty(loginDate) ? $"Joined {loginDate}" : "Joined on an unknown date";
+            UserNameLabel.Text = User.Name;
+            UserEmailLabel.Text = User.Email;
+            UserPhoneLabel.Text = User.PhoneNumber;
 
             // Initiales pour l'avatar
-            if (!string.IsNullOrEmpty(user.Name))
+            if (!string.IsNullOrEmpty(User.Name))
             {
-                AvatarLabel.Text = string.Join("", user.Name.Split(' ')[0][0], user.Name.Split(' ')[1][0]);
+                AvatarLabel.Text = string.Join("", User.Name.Split(' ')[0][0], User.Name.Split(' ')[1][0]);
             }
         }
 
@@ -68,6 +75,7 @@ namespace Mobile_3ilPark
                 // Clear stored user information
                 Preferences.Remove("AuthToken");
                 Preferences.Remove("UserId");
+                Preferences.Remove("LoginDate");
 
                 // Navigate back to the login page
                 Application.Current.MainPage = new NavigationPage(new Loginxaml());

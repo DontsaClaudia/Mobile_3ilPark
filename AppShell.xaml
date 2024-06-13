@@ -29,12 +29,23 @@
             Route="Parcs"
             Icon="park.png" />
 
-        
+
         <ShellContent
             Title="Computers"
             ContentTemplate="{DataTemplate local:ComputersPage}"
             Route="ComputersPage"
             Icon="computer.png" />
+            
+        <ShellContent 
+            Route="ComputersDetailPage" 
+            ContentTemplate="{DataTemplate local:ComputersDetailPage}"
+            FlyoutIcon="detail.png"/>
+
+        <ShellContent
+            Title="Rooms"
+            ContentTemplate="{DataTemplate local:RoomsPage}"
+            Route="RoomsPage"
+            Icon="rooms.png" />
 
         <ShellContent
             Title="Profile"

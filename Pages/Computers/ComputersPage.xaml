@@ -6,14 +6,13 @@
              BackgroundColor="#ffffff">
 
     <ContentPage.Content>
-        <StackLayout Padding="10" >
-            
-            <Image Source="computers_page.png" 
-                   WidthRequest="200" 
-                   HeightRequest="200" 
-                   HorizontalOptions="Center" 
+        <StackLayout Padding="10">
+
+            <Image Source="computers_page.png"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
                    VerticalOptions="Center"
-                   
                    />
 
             <Label Text="Registered Computers"
@@ -23,16 +22,20 @@
                    HorizontalOptions="Center"
                    Margin="0,20,0,10" />
 
-
             <SearchBar x:Name="ComputerSearchBar"
                        Placeholder="Search computers..."
                        TextChanged="OnSearchBarTextChanged"
                        Margin="0,10,0,20"/>
-            
-            <CollectionView x:Name="ComputersCollectionView" SelectionMode="None">
+
+            <CollectionView x:Name="ComputersCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCollectionViewSelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="#007bff" CornerRadius="10" Margin="10" Padding="10">
+                        <Frame BorderColor="#007bff"
+                               CornerRadius="10"
+                               Margin="10"
+                               Padding="10">
                             <StackLayout>
                                 <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
                                 <Label Text="{Binding Manufacturer}" FontSize="14" />
@@ -45,7 +48,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -10,7 +10,7 @@
                 <Frame WidthRequest="100" HeightRequest="100" CornerRadius="50" BackgroundColor="#EFEFEF" HorizontalOptions="Center">
                     <Label x:Name="AvatarLabel" Text="JS" HorizontalOptions="Center" VerticalOptions="Center" FontSize="48" TextColor="Purple"/>
                 </Frame>
-                <Label x:Name="NameLabel" Text="Zain Malik" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
                 <Label x:Name="JoinedDateLabel" Text="Joined August 17, 2023" FontSize="14" TextColor="#888" HorizontalOptions="Center"/>
             </StackLayout>
 
@@ -20,15 +20,15 @@
                     <Label Text="General" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
                     <HorizontalStackLayout Spacing="10">
                         <Image Source="icon_user.png" WidthRequest="24" HeightRequest="24"/>
-                        <Label x:Name="UserNameLabel" Text="Zain Malik" FontSize="16"/>
+                        <Label x:Name="UserNameLabel" Text="{Binding Name}" FontSize="16"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="10">
                         <Image Source="icon_email.png" WidthRequest="24" HeightRequest="24"/>
-                        <Label x:Name="UserEmailLabel" Text="zainmalik02323@gmail.com" FontSize="16"/>
+                        <Label x:Name="UserEmailLabel" Text="{Binding Email}" FontSize="16"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="10">
                         <Image Source="icon_phone.png" WidthRequest="24" HeightRequest="24"/>
-                        <Label x:Name="UserPhoneLabel" Text="(628) 267-9041" FontSize="16"/>
+                        <Label x:Name="UserPhoneLabel" Text="{Binding PhoneNumber}" FontSize="16"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="10">
                         <Image Source="icon_feedback.png" WidthRequest="24" HeightRequest="24"/>

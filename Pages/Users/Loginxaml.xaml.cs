@@ -54,6 +54,7 @@ namespace Mobile_3ilPark
                 // Save the token or any other data as needed
                 Preferences.Set("AuthToken", result.accessToken);
                 Preferences.Set("UserId", result.UserId);
+                Preferences.Set("LoginDate", DateTime.Now.ToString("MMMM dd, yyyy"));
 
                 // Naviguer vers la WelcomePage après une connexion réussie
                 await Navigation.PushAsync(new WelcomePage());

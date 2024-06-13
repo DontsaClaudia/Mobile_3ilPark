@@ -1,17 +1,15 @@
-﻿using Mobile_3ilPark.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
+﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+using Mobile_3ilPark.Models;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
+
 
 namespace Mobile_3ilPark.Services;
 
 public class ApiService
 {
     private readonly HttpClient _httpClient;
-
+    
 
     public ApiService()
     {
@@ -21,6 +19,25 @@ public class ApiService
         };
     }
 
+    /// <summary>
+    /// Authorisattion pour le token
+    /// </summary>
+    private void AddAuthorizationHeader()
+    {
+        var token = Preferences.Get("AuthToken", string.Empty);
+        Console.WriteLine($"Using token: {token}");
+        if (!string.IsNullOrEmpty(token))
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        }
+    }
+
+    /// <summary>
+    /// Fonction pour la connexion à l'application via l'Api et récuparation du token
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
     public async Task<LoginResult> LoginAsync(string email, string password)
     {
         var loginUrl = "login";
@@ -32,7 +49,7 @@ public class ApiService
         };
 
         var response = await _httpClient.PostAsJsonAsync(loginUrl, loginData);
-        Console.WriteLine();
+       
 
         if (response.IsSuccessStatusCode)
         {
@@ -48,7 +65,27 @@ public class ApiService
     {
         public bool IsSuccess { get; set; }
         public string? accessToken { get; set; }
+        public int UserId { get; set; }
     }
+
+    /// <summary>
+    ///  Fonction pour afficher les données de 'utilisateur connecté
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    public async Task<Users> GetUserAsync(int userId, string token)
+    {
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var UserApi = $"api/Users/{userId}";
+        var response = await _httpClient.GetFromJsonAsync<Users>(UserApi);
+        return response;
+    }
+
+    /// <summary>
+    ///  fonction pour lister les computers enregistrés
+    /// </summary>
+    /// <param name="token"></param>
+    /// <returns></returns>
     public async Task<List<Computers>> GetComputersAsync(string token)
     {
         try
@@ -59,21 +96,53 @@ public class ApiService
         }
         catch (HttpRequestException httpEx)
         {
-            // Gérer les erreurs de requête HTTP
+            
             Console.WriteLine($"Request error: {httpEx.Message}");
         }
         catch (Exception ex)
         {
-            // Gérer les autres erreurs
+            
             Console.WriteLine($"Unexpected error: {ex.Message}");
         }
         return new List<Computers>();
     }
 
-    public async Task<Users> GetUserAsync(int Id)
+    /// <summary>
+    ///  Recuperer un computer
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<Computers> GetComputerByIdAsync(int id)
     {
-        var apiUrl = $"api/Users/{Id}"; // Remplacez par l'URL de votre API
-        var response = await _httpClient.GetFromJsonAsync<Users>(apiUrl);
+        AddAuthorizationHeader();
+        var apiUrl = $"api/Computers/{id}"; 
+        var response = await _httpClient.GetFromJsonAsync<Computers>(apiUrl);
         return response;
+    }
+
+    /// <summary>
+    /// Fonction  pour modifier un computer
+    /// </summary>
+    /// <param name="computer"></param>
+    /// <param name="token"></param>
+    /// <returns></returns>
+    public async Task UpdateComputerAsync(Computers computer)
+    {
+        AddAuthorizationHeader();
+        var apiUrl = $"api/Computers/{computer.Id}"; 
+        await _httpClient.PutAsJsonAsync(apiUrl, computer);
+    }
+
+    /// <summary>
+    /// Fonction pour supprimer un computer
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="token"></param>
+    /// <returns></returns>
+    public async Task DeleteComputerAsync(int id)
+    {
+        AddAuthorizationHeader();
+        var apiUrl = $"api/Computers/{id}"; 
+        await _httpClient.DeleteAsync(apiUrl);
     }
 }
