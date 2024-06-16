@@ -10,8 +10,8 @@
 
     <!-- En-tête du Flyout -->
     <Shell.FlyoutHeader>
-        <StackLayout Padding="10" BackgroundColor="#ffffff">
-            <Image Source="logo3il.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100" HeightRequest="100"/>
+        <StackLayout  >
+            <Image Source="logo.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100" HeightRequest="100"/>
         </StackLayout>
     </Shell.FlyoutHeader>
 
@@ -36,10 +36,6 @@
             Route="ComputersPage"
             Icon="computer.png" />
             
-        <ShellContent 
-            Route="ComputersDetailPage" 
-            ContentTemplate="{DataTemplate local:ComputersDetailPage}"
-            FlyoutIcon="detail.png"/>
 
         <ShellContent
             Title="Rooms"
@@ -57,7 +53,7 @@
 
     </FlyoutItem>
 
-    <!-- Autres éléments du Flyout -->
+    
     <FlyoutItem Title="Settings" FlyoutDisplayOptions="AsSingleItem">
         <ShellContent
             Title="Settings"

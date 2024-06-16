@@ -21,12 +21,7 @@ namespace Mobile_3ilPark
             var email = emailEntry.Text;
             var password = passwordEntry.Text;
 
-            // Tester la connexion réseau
-            if (!IsInternetAvailable())
-            {
-                await DisplayAlert("Error", "No internet connection.", "OK");
-                return;
-            }
+           
 
             // Valider l'email
             if (!IsValidEmail(email))
@@ -95,18 +90,6 @@ namespace Mobile_3ilPark
             return hasUpperCase.IsMatch(password) && hasLowerCase.IsMatch(password) && hasDigits.IsMatch(password) && hasSpecialChars.IsMatch(password);
         }
 
-        private bool IsInternetAvailable()
-        {
-            try
-            {
-                using (var client = new WebClient())
-                using (client.OpenRead("http://www.google.com"))
-                    return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        
     }
 }

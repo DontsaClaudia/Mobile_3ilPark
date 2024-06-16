@@ -82,28 +82,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\Computers\ComputersPage.xaml.cs">
+	  <Compile Update="Pages\VComputers\ComputersPage.xaml.cs">
 	    <DependentUpon>ComputersPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\Computers\ComputersDetailPage.xaml">
+	  <MauiXaml Update="Pages\VComputers\ComputersDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Computers\ComputersPage.xaml">
+	  <MauiXaml Update="Pages\VComputers\ComputersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Rooms\RoomsPage.xaml">
+	  <MauiXaml Update="Pages\VRooms\RoomsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Users\Loginxaml.xaml">
+	  <MauiXaml Update="Pages\VUsers\Loginxaml.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Parks\Parcs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Users\Profile.xaml">
+	  <MauiXaml Update="Pages\VUsers\Profile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">

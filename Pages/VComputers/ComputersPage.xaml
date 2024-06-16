@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobile_3ilPark.ComputersPage"
              Title="Computers"
-             BackgroundColor="#ffffff">
+             BackgroundColor="#f0f0f0">
 
     <ContentPage.Content>
         <StackLayout Padding="10">
@@ -32,18 +32,33 @@
                             SelectionChanged="OnCollectionViewSelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="#007bff"
-                               CornerRadius="10"
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
                                Margin="10"
                                Padding="10">
-                            <StackLayout>
-                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
-                                <Label Text="{Binding Manufacturer}" FontSize="14" />
-                                <Label Text="{Binding Model}" FontSize="14" />
-                                <Label Text="{Binding Caption}" FontSize="14" />
-                                <Label Text="{Binding TotalPhysicalMemory}" FontSize="14" />
-                                <Label Text="{Binding Room.Name}" FontSize="14" />
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="{Binding Created_at, StringFormat='{0:dd - MMMM}'}" 
+                                           FontSize="14"
+                                           TextColor="#888" 
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Manufacturer}" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           TextColor="#333" 
+                                           HorizontalOptions="Start"/>
+                                </StackLayout>
+                                <Image Source="icon_placeholder.png" 
+                                       WidthRequest="24"
+                                       HeightRequest="24"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"/>
+                            </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

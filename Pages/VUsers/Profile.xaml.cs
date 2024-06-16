@@ -72,12 +72,12 @@ namespace Mobile_3ilPark
             bool confirm = await DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No");
             if (confirm)
             {
-                // Clear stored user information
+                
                 Preferences.Remove("AuthToken");
                 Preferences.Remove("UserId");
                 Preferences.Remove("LoginDate");
 
-                // Navigate back to the login page
+                
                 Application.Current.MainPage = new NavigationPage(new Loginxaml());
             }
         }

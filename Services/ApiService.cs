@@ -15,7 +15,7 @@ public class ApiService
     {
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri("http://10.0.2.2:5165")
+            BaseAddress = new Uri("http://10.0.2.2:5010")
         };
     }
 
@@ -137,12 +137,43 @@ public class ApiService
     /// Fonction pour supprimer un computer
     /// </summary>
     /// <param name="id"></param>
-    /// <param name="token"></param>
+
     /// <returns></returns>
     public async Task DeleteComputerAsync(int id)
     {
         AddAuthorizationHeader();
         var apiUrl = $"api/Computers/{id}"; 
         await _httpClient.DeleteAsync(apiUrl);
+    }
+
+
+    public async Task<List<Rooms>> GetRoomsAsync()
+    {
+        AddAuthorizationHeader();
+        return await _httpClient.GetFromJsonAsync<List<Rooms>>("api/Rooms");
+    }
+
+    public async Task<Rooms> GetRoomByIdAsync(int id)
+    {
+        AddAuthorizationHeader();
+        return await _httpClient.GetFromJsonAsync<Rooms>($"api/Rooms/{id}");
+    }
+
+    public async Task CreateRoomAsync(Rooms room)
+    {
+        AddAuthorizationHeader();
+        await _httpClient.PostAsJsonAsync("api/Rooms", room);
+    }
+
+    public async Task UpdateRoomAsync(Rooms room)
+    {
+        AddAuthorizationHeader();
+        await _httpClient.PutAsJsonAsync($"api/Rooms/{room.Id}", room);
+    }
+
+    public async Task DeleteRoomAsync(int id)
+    {
+        AddAuthorizationHeader();   
+        await _httpClient.DeleteAsync($"api/Rooms/{id}");
     }
 }

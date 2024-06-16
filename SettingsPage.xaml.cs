@@ -1,4 +1,7 @@
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using System;
+using System.Linq;
 
 namespace Mobile_3ilPark
 {
@@ -7,19 +10,34 @@ namespace Mobile_3ilPark
         public SettingsPage()
         {
             InitializeComponent();
+            LoadSettings();
+        }
 
-            // Charger les paramètres existants (si disponible)
+        private void LoadSettings()
+        {
             notificationSwitch.IsToggled = Preferences.Get("EnableNotifications", true);
-            themePicker.SelectedItem = Preferences.Get("AppTheme", "Light");
+            string theme = Preferences.Get("AppTheme", "Light");
+            themePicker.SelectedItem = theme;
         }
 
         private void OnSaveSettingsClicked(object sender, EventArgs e)
         {
-            // Enregistrer les paramètres
             Preferences.Set("EnableNotifications", notificationSwitch.IsToggled);
             Preferences.Set("AppTheme", themePicker.SelectedItem.ToString());
 
-            DisplayAlert("Settings", "Settings saved successfully", "OK");
+            ApplyTheme(themePicker.SelectedItem.ToString());
+        }
+
+        private void ApplyTheme(string theme)
+        {
+            if (theme == "Dark")
+            {
+                Application.Current.Resources = (ResourceDictionary)Application.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.GetType() == typeof(ResourceDictionary) && ((ResourceDictionary)d).MergedDictionaries.Any(md => md is ResourceDictionary rd && rd.Source.OriginalString.Contains("DarkTheme")));
+            }
+            else
+            {
+                Application.Current.Resources = (ResourceDictionary)Application.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.GetType() == typeof(ResourceDictionary) && ((ResourceDictionary)d).MergedDictionaries.Any(md => md is ResourceDictionary rd && rd.Source.OriginalString.Contains("LightTheme")));
+            }
         }
     }
 }

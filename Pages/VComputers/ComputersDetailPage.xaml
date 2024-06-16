@@ -7,14 +7,11 @@
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="20">
-
-               
                 <Image Source="computer_image.jpeg"
                        HeightRequest="200"
                        Aspect="AspectFill"
                        HorizontalOptions="Center" />
 
-                
                 <Label Text="{Binding Name}"
                        FontSize="24"
                        FontAttributes="Bold"
@@ -48,7 +45,6 @@
                     </VerticalStackLayout>
                 </Frame>
 
-                
                 <HorizontalStackLayout Spacing="20">
                     <Button Text="Edit"
                             TextColor="White"
@@ -64,7 +60,6 @@
                             HorizontalOptions="FillAndExpand"
                             Clicked="OnDeleteButtonClicked" />
                 </HorizontalStackLayout>
-
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>
