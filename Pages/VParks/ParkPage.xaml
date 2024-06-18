@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_3ilPark.ParkPage"
+             Title="Parks"
+             BackgroundColor="#f0f0f0">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <Image Source="parcs.png"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <Label Text="Registered Parks"
+                   TextColor="Aquamarine"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10" />
+
+            <SearchBar x:Name="ParkSearchBar"
+                       Placeholder="Search parks..."
+                       TextChanged="OnSearchBarTextChanged"
+                       TextColor="Black"
+                       Margin="0,10,0,20"/>
+
+            <CollectionView x:Name="ParksCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCollectionViewSelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
+                               Margin="10"
+                               Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="{Binding CreateDate, StringFormat='{0:dd - MMMM}'}" 
+                                           FontSize="14"
+                                           TextColor="#888" 
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           TextColor="#333" 
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Address}" 
+                                           FontSize="14" 
+                                           TextColor="#555"
+                                           HorizontalOptions="Start"/>
+                                </StackLayout>
+                                <Image Source="icon_placeholder.png" 
+                                       WidthRequest="24"
+                                       HeightRequest="24"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

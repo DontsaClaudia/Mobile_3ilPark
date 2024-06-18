@@ -11,11 +11,12 @@ namespace Mobile_3ilPark
             InitializeComponent();
 
             Routing.RegisterRoute("MainPage", typeof(MainPage));
-            Routing.RegisterRoute("Parcs", typeof(Parcs));
-            Routing.RegisterRoute("Profile", typeof(Profile));
+            Routing.RegisterRoute("ParkPage", typeof(ParkPage));
+            Routing.RegisterRoute("ParkDetailPage", typeof(ParkDetailPage));
             Routing.RegisterRoute("ComputersPage", typeof(ComputersPage));
             Routing.RegisterRoute("ComputersDetailPage", typeof(ComputersDetailPage));
             Routing.RegisterRoute("RoomsPage", typeof(RoomsPage));
+            Routing.RegisterRoute("Profile", typeof(Profile));
             Routing.RegisterRoute("SettingsPage", typeof(SettingsPage));
             
         }

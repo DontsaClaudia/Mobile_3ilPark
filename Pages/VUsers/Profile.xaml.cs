@@ -27,7 +27,7 @@ namespace Mobile_3ilPark
                 var userId = Preferences.Get("UserId", 0); 
                 if (userId != 0)
                 {
-                    var user = await _apiService.GetUserAsync(userId, token);
+                    var user = await _apiService.GetUserAsync(userId);
                     if (user != null)
                     {
                         User = user;

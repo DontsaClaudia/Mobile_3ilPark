@@ -9,7 +9,7 @@ namespace Mobile_3ilPark.Services;
 public class ApiService
 {
     private readonly HttpClient _httpClient;
-    
+
 
     public ApiService()
     {
@@ -49,7 +49,7 @@ public class ApiService
         };
 
         var response = await _httpClient.PostAsJsonAsync(loginUrl, loginData);
-       
+
 
         if (response.IsSuccessStatusCode)
         {
@@ -96,12 +96,12 @@ public class ApiService
         }
         catch (HttpRequestException httpEx)
         {
-            
+
             Console.WriteLine($"Request error: {httpEx.Message}");
         }
         catch (Exception ex)
         {
-            
+
             Console.WriteLine($"Unexpected error: {ex.Message}");
         }
         return new List<Computers>();
@@ -115,7 +115,7 @@ public class ApiService
     public async Task<Computers> GetComputerByIdAsync(int id)
     {
         AddAuthorizationHeader();
-        var apiUrl = $"api/Computers/{id}"; 
+        var apiUrl = $"api/Computers/{id}";
         var response = await _httpClient.GetFromJsonAsync<Computers>(apiUrl);
         return response;
     }
@@ -129,7 +129,7 @@ public class ApiService
     public async Task UpdateComputerAsync(Computers computer)
     {
         AddAuthorizationHeader();
-        var apiUrl = $"api/Computers/{computer.Id}"; 
+        var apiUrl = $"api/Computers/{computer.Id}";
         await _httpClient.PutAsJsonAsync(apiUrl, computer);
     }
 
@@ -142,7 +142,7 @@ public class ApiService
     public async Task DeleteComputerAsync(int id)
     {
         AddAuthorizationHeader();
-        var apiUrl = $"api/Computers/{id}"; 
+        var apiUrl = $"api/Computers/{id}";
         await _httpClient.DeleteAsync(apiUrl);
     }
 
@@ -173,7 +173,37 @@ public class ApiService
 
     public async Task DeleteRoomAsync(int id)
     {
-        AddAuthorizationHeader();   
+        AddAuthorizationHeader();
         await _httpClient.DeleteAsync($"api/Rooms/{id}");
+    }
+
+    public async Task<List<Parks>> GetParksAsync()
+    {
+        AddAuthorizationHeader();
+        return await _httpClient.GetFromJsonAsync<List<Parks>>("api/Parks");
+    }
+
+    public async Task<Parks> GetParkByIdAsync(int id)
+    {
+        AddAuthorizationHeader();
+        return await _httpClient.GetFromJsonAsync<Parks>($"api/Parks/{id}");
+    }
+
+    public async Task CreateParkAsync(Parks park)
+    {
+        AddAuthorizationHeader();
+        await _httpClient.PostAsJsonAsync("api/Parks", park);
+    }
+
+    public async Task UpdateParkAsync(Parks park)
+    {
+        AddAuthorizationHeader();
+        await _httpClient.PutAsJsonAsync($"api/Parks/{park.Id}", park);
+    }
+
+    public async Task DeleteParkAsync(int id)
+    {
+        AddAuthorizationHeader();
+        await _httpClient.DeleteAsync($"api/Parks/{id}");
     }
 }

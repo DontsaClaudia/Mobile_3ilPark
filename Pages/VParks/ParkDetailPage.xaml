@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_3ilPark.ParkDetailPage"
+             Title="Park Detail"
+             BackgroundColor="#ffffff">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <Image Source="service.jpg"
+                       HeightRequest="200"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Name}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Frame BorderColor="#e0e0e0"
+                       CornerRadius="10"
+                       Padding="10"
+                       Margin="0,10,0,0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Details"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#333" />
+
+                        <Label Text="{Binding Address}"
+                               FontSize="16"
+                               TextColor="#666" />
+                        <Label Text="{Binding CreateDate, StringFormat='{0:dd MMMM yyyy}'}"
+                               FontSize="16"
+                               TextColor="#666" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Button Text="Edit"
+                            TextColor="White"
+                            BackgroundColor="#007bff"
+                            CornerRadius="20"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="OnEditButtonClicked" />
+
+                    <Button Text="Delete"
+                            TextColor="White"
+                            BackgroundColor="#FF0000"
+                            CornerRadius="20"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="OnDeleteButtonClicked" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

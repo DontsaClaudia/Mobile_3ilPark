@@ -25,8 +25,8 @@
 
         <ShellContent
             Title="Parcs"
-            ContentTemplate="{DataTemplate local:Parcs}"
-            Route="Parcs"
+            ContentTemplate="{DataTemplate local:ParkPage}"
+            Route="ParkPage"
             Icon="park.png" />
 
 
